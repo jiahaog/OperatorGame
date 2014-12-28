@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		9703E99D1A3C26740099405D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9703E99C1A3C26740099405D /* main.m */; };
 		9703E9A01A3C26740099405D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9703E99F1A3C26740099405D /* AppDelegate.m */; };
-		9703E9A31A3C26740099405D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9703E9A21A3C26740099405D /* ViewController.m */; };
 		9703E9A61A3C26740099405D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9703E9A41A3C26740099405D /* Main.storyboard */; };
 		9703E9A81A3C26740099405D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9703E9A71A3C26740099405D /* Images.xcassets */; };
 		9703E9AB1A3C26740099405D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9703E9A91A3C26740099405D /* LaunchScreen.xib */; };
 		9703E9B71A3C26740099405D /* OperatorGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9703E9B61A3C26740099405D /* OperatorGameTests.m */; };
+		977E53A01A504BF6009FC6F9 /* HPDGameScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */; };
+		977E53A31A504F70009FC6F9 /* NumberLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 977E53A21A504F70009FC6F9 /* NumberLogic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,16 @@
 		9703E99C1A3C26740099405D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9703E99E1A3C26740099405D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9703E99F1A3C26740099405D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9703E9A11A3C26740099405D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9703E9A21A3C26740099405D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9703E9A51A3C26740099405D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9703E9A71A3C26740099405D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9703E9AA1A3C26740099405D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9703E9B01A3C26740099405D /* OperatorGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperatorGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9703E9B51A3C26740099405D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9703E9B61A3C26740099405D /* OperatorGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperatorGameTests.m; sourceTree = "<group>"; };
+		977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDGameScreenViewController.h; sourceTree = "<group>"; };
+		977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDGameScreenViewController.m; sourceTree = "<group>"; };
+		977E53A11A504F70009FC6F9 /* NumberLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberLogic.h; sourceTree = "<group>"; };
+		977E53A21A504F70009FC6F9 /* NumberLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberLogic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +86,11 @@
 			children = (
 				9703E99E1A3C26740099405D /* AppDelegate.h */,
 				9703E99F1A3C26740099405D /* AppDelegate.m */,
-				9703E9A11A3C26740099405D /* ViewController.h */,
-				9703E9A21A3C26740099405D /* ViewController.m */,
 				9703E9A41A3C26740099405D /* Main.storyboard */,
+				977E53A11A504F70009FC6F9 /* NumberLogic.h */,
+				977E53A21A504F70009FC6F9 /* NumberLogic.m */,
+				977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */,
+				977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */,
 				9703E9A71A3C26740099405D /* Images.xcassets */,
 				9703E9A91A3C26740099405D /* LaunchScreen.xib */,
 				9703E99A1A3C26740099405D /* Supporting Files */,
@@ -168,6 +173,7 @@
 				TargetAttributes = {
 					9703E9961A3C26740099405D = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = MK8L362Z75;
 					};
 					9703E9AF1A3C26740099405D = {
 						CreatedOnToolsVersion = 6.1;
@@ -219,9 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9703E9A31A3C26740099405D /* ViewController.m in Sources */,
 				9703E9A01A3C26740099405D /* AppDelegate.m in Sources */,
+				977E53A01A504BF6009FC6F9 /* HPDGameScreenViewController.m in Sources */,
 				9703E99D1A3C26740099405D /* main.m in Sources */,
+				977E53A31A504F70009FC6F9 /* NumberLogic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,9 +352,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OperatorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -355,9 +365,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OperatorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -414,6 +427,7 @@
 				9703E9BC1A3C26740099405D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9703E9BD1A3C26740099405D /* Build configuration list for PBXNativeTarget "OperatorGameTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +436,7 @@
 				9703E9BF1A3C26740099405D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
