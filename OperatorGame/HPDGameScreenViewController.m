@@ -8,7 +8,8 @@
 
 
 #import "HPDGameScreenViewController.h"
-#import "NumberLogic.h"
+#import "HPDNumberLogic.h"
+#import "HPDGameStateLogic.h"
 
 @interface HPDGameScreenViewController ()
 
@@ -16,9 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberBLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberCLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (nonatomic) NumberLogic *numberLogic;
 
-@property (nonatomic) int score;
+@property (nonatomic) HPDNumberLogic *numberLogic;
+@property (nonatomic) HPDGameStateLogic *gameStateLogic;
+
 
 @end
 
@@ -27,9 +29,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initialiseScore];
+    
+    if (!self.numberLogic) {
+        self.numberLogic = [[HPDNumberLogic alloc] init];
+    }
+    
+    if (!self.gameStateLogic) {
+        self.gameStateLogic = [[HPDGameStateLogic alloc] initWithViewController:self];
+    }
+    
+    self.scoreLabel.text = [@(0) stringValue];
+    
     [self newQuestion];
     
+//    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [testButton setTitle:@"TESTBUTTONLOL" forState:UIControlStateNormal];
+//    testButton.frame = CGRectMake(80, 210, 50, 50);
+//    [self.view addSubview:testButton];
+//    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,10 +68,6 @@
 
 - (void)newQuestion {
     
-    if (!self.numberLogic) {
-        self.numberLogic = [[NumberLogic alloc] init];
-    }
-    
     [self.numberLogic newQuestion];
     
     self.numberALabel.text = [NSString stringWithFormat:@"%d", self.numberLogic.numberA];
@@ -64,60 +77,27 @@
 
 }
 
-- (void)initialiseScore {
-    
-    self.score = 0;
-    self.scoreLabel.text = [@(0) stringValue];
-    
-    [NSTimer scheduledTimerWithTimeInterval:2.0
-                                     target:self
-                                   selector:@selector(decrementScoreOverTime)
-                                   userInfo:nil
-                                    repeats:YES];
-    
+
+- (void)updateScoreLabelWithScore:(int)score {
+    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
 }
-
-- (void)checkAndAddScoreFromAnswer:(BOOL) answer {
-    
-    int correctAnswer = 1;
-    int wrongAnswer = -1;
-    
-    if (answer) {
-        [self modifyScoreByValue:correctAnswer];
-    } else {
-        [self modifyScoreByValue:wrongAnswer];
-    }
-}
-
-- (void)decrementScoreOverTime {
-    [self modifyScoreByValue:-1];
-}
-
-- (void)modifyScoreByValue:(int) value {
-
-    self.score += value;
-    self.scoreLabel.text = [@(self.score) stringValue];
-    
-}
-
-
 
 - (IBAction)plusSelected:(id)sender {
     BOOL answer = [self.numberLogic plusSelected];
     
-    [self checkAndAddScoreFromAnswer:answer];
+    [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
 - (IBAction)minusSelected:(id)sender {
     BOOL answer = [self.numberLogic minusSelected];
 
-    [self checkAndAddScoreFromAnswer:answer];
+    [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
 - (IBAction)multiplySelected:(id)sender {
     BOOL answer = [self.numberLogic multiplySelected];
     
-    [self checkAndAddScoreFromAnswer:answer];
+    [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
 
@@ -125,7 +105,7 @@
     
     BOOL answer = [self.numberLogic divideSelected];
     
-    [self checkAndAddScoreFromAnswer:answer];
+    [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
 

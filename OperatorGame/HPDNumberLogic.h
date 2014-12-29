@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NumberLogic : NSObject
+@interface HPDNumberLogic : NSObject
 
 @property (nonatomic) int numberA;
 @property (nonatomic) int numberB;

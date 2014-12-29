@@ -14,7 +14,8 @@
 		9703E9AB1A3C26740099405D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9703E9A91A3C26740099405D /* LaunchScreen.xib */; };
 		9703E9B71A3C26740099405D /* OperatorGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9703E9B61A3C26740099405D /* OperatorGameTests.m */; };
 		977E53A01A504BF6009FC6F9 /* HPDGameScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */; };
-		977E53A31A504F70009FC6F9 /* NumberLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 977E53A21A504F70009FC6F9 /* NumberLogic.m */; };
+		977E53A31A504F70009FC6F9 /* HPDNumberLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 977E53A21A504F70009FC6F9 /* HPDNumberLogic.m */; };
+		97DFA2E61A50F76E00C0FD1C /* HPDGameStateLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DFA2E51A50F76E00C0FD1C /* HPDGameStateLogic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +42,10 @@
 		9703E9B61A3C26740099405D /* OperatorGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperatorGameTests.m; sourceTree = "<group>"; };
 		977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDGameScreenViewController.h; sourceTree = "<group>"; };
 		977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDGameScreenViewController.m; sourceTree = "<group>"; };
-		977E53A11A504F70009FC6F9 /* NumberLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberLogic.h; sourceTree = "<group>"; };
-		977E53A21A504F70009FC6F9 /* NumberLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberLogic.m; sourceTree = "<group>"; };
+		977E53A11A504F70009FC6F9 /* HPDNumberLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDNumberLogic.h; sourceTree = "<group>"; };
+		977E53A21A504F70009FC6F9 /* HPDNumberLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDNumberLogic.m; sourceTree = "<group>"; };
+		97DFA2E41A50F76E00C0FD1C /* HPDGameStateLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDGameStateLogic.h; sourceTree = "<group>"; };
+		97DFA2E51A50F76E00C0FD1C /* HPDGameStateLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDGameStateLogic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,13 +87,8 @@
 		9703E9991A3C26740099405D /* OperatorGame */ = {
 			isa = PBXGroup;
 			children = (
-				9703E99E1A3C26740099405D /* AppDelegate.h */,
-				9703E99F1A3C26740099405D /* AppDelegate.m */,
-				9703E9A41A3C26740099405D /* Main.storyboard */,
-				977E53A11A504F70009FC6F9 /* NumberLogic.h */,
-				977E53A21A504F70009FC6F9 /* NumberLogic.m */,
-				977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */,
-				977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */,
+				97DFA2E81A50FD2000C0FD1C /* Views */,
+				97DFA2E71A50FD1300C0FD1C /* Game Logic */,
 				9703E9A71A3C26740099405D /* Images.xcassets */,
 				9703E9A91A3C26740099405D /* LaunchScreen.xib */,
 				9703E99A1A3C26740099405D /* Supporting Files */,
@@ -101,6 +99,8 @@
 		9703E99A1A3C26740099405D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9703E99E1A3C26740099405D /* AppDelegate.h */,
+				9703E99F1A3C26740099405D /* AppDelegate.m */,
 				9703E99B1A3C26740099405D /* Info.plist */,
 				9703E99C1A3C26740099405D /* main.m */,
 			);
@@ -122,6 +122,27 @@
 				9703E9B51A3C26740099405D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97DFA2E71A50FD1300C0FD1C /* Game Logic */ = {
+			isa = PBXGroup;
+			children = (
+				977E53A11A504F70009FC6F9 /* HPDNumberLogic.h */,
+				977E53A21A504F70009FC6F9 /* HPDNumberLogic.m */,
+				97DFA2E41A50F76E00C0FD1C /* HPDGameStateLogic.h */,
+				97DFA2E51A50F76E00C0FD1C /* HPDGameStateLogic.m */,
+			);
+			name = "Game Logic";
+			sourceTree = "<group>";
+		};
+		97DFA2E81A50FD2000C0FD1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9703E9A41A3C26740099405D /* Main.storyboard */,
+				977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */,
+				977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +247,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9703E9A01A3C26740099405D /* AppDelegate.m in Sources */,
+				97DFA2E61A50F76E00C0FD1C /* HPDGameStateLogic.m in Sources */,
 				977E53A01A504BF6009FC6F9 /* HPDGameScreenViewController.m in Sources */,
 				9703E99D1A3C26740099405D /* main.m in Sources */,
-				977E53A31A504F70009FC6F9 /* NumberLogic.m in Sources */,
+				977E53A31A504F70009FC6F9 /* HPDNumberLogic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
