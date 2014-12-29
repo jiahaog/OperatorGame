@@ -1,0 +1,30 @@
+PODS:
+  - AGAssert (0.2)
+  - AGGeometryKit (1.0.5):
+    - AGGeometryKit/Default (= 1.0.5)
+  - AGGeometryKit+POP (0.1):
+    - AGGeometryKit+POP/Default (= 0.1)
+  - AGGeometryKit+POP/Default (0.1):
+    - AGGeometryKit (~> 1.0)
+    - pop (~> 1.0.4)
+  - AGGeometryKit/Core (1.0.5)
+  - AGGeometryKit/Default (1.0.5):
+    - AGGeometryKit/Core
+    - AGGeometryKit/Dependencies
+  - AGGeometryKit/Dependencies (1.0.5):
+    - AGAssert (~> 0.2)
+    - JRSwizzle (~> 1.0)
+  - JRSwizzle (1.0)
+  - pop (1.0.7)
+
+DEPENDENCIES:
+  - AGGeometryKit+POP (~> 0.1)
+
+SPEC CHECKSUMS:
+  AGAssert: f211a777b51dc7561e17ae7bad4f924e823a7317
+  AGGeometryKit: 2305d9e1a62b855653911b05f5e53a63c637e8cb
+  AGGeometryKit+POP: ce59606c52dd295a4844f287b85d672ce224321e
+  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+
+COCOAPODS: 0.35.0

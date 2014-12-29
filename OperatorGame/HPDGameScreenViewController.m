@@ -21,6 +21,7 @@
 @property (nonatomic) HPDNumberLogic *numberLogic;
 @property (nonatomic) HPDGameStateLogic *gameStateLogic;
 
+@property (nonatomic) UIView *playerSelectionButtons;
 
 @end
 
@@ -38,9 +39,10 @@
         self.gameStateLogic = [[HPDGameStateLogic alloc] initWithViewController:self];
     }
     
-    self.scoreLabel.text = [@(0) stringValue];
+    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
     
     [self newQuestion];
+    [self addPlayerSelectionButtons];
     
 //    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [testButton setTitle:@"TESTBUTTONLOL" forState:UIControlStateNormal];
@@ -78,31 +80,100 @@
 }
 
 
+- (void)addPlayerSelectionButtons {
+    
+    if (!self.playerSelectionButtons) {
+        
+        
+        CGRect playerSelectionButtonFrame = CGRectMake(0, self.view.frame.size.height*2/3, self.view.frame.size.width, self.view.frame.size.height/3);
+        self.playerSelectionButtons = [[UIView alloc] initWithFrame:playerSelectionButtonFrame];
+        self.playerSelectionButtons.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:self.playerSelectionButtons];
+        
+        
+        // Add buttons to view
+        
+        CGFloat buttonTitleFontSize = 100;
+        
+        CGRect plusButtonFrame = CGRectMake(0,
+                                            0,
+                                            self.playerSelectionButtons.frame.size.width/2.0,
+                                            self.playerSelectionButtons.frame.size.height/2.0);
+        UIButton *plusButton = [[UIButton alloc] initWithFrame:plusButtonFrame];
+        [plusButton addTarget:self action:@selector(plusSelected) forControlEvents:UIControlEventTouchUpInside];
+        plusButton.backgroundColor = [UIColor blueColor];
+        [plusButton setTitle:@"+" forState:UIControlStateNormal];
+        plusButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
+        [self.playerSelectionButtons addSubview:plusButton];
+        
+        CGRect minusButtonFrame = CGRectMake(self.playerSelectionButtons.frame.size.width/2.0,
+                                             0,
+                                             self.playerSelectionButtons.frame.size.width/2.0,
+                                             self.playerSelectionButtons.frame.size.height/2.0);
+        UIButton *minusButton = [[UIButton alloc] initWithFrame:minusButtonFrame];
+        [minusButton addTarget:self action:@selector(minusSelected) forControlEvents:UIControlEventTouchUpInside];
+        minusButton.backgroundColor = [UIColor redColor];
+        [minusButton setTitle:@"−" forState:UIControlStateNormal];
+        minusButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
+        [self.playerSelectionButtons addSubview:minusButton];
+        
+        CGRect multiplyButtonFrame = CGRectMake(0,
+                                                self.playerSelectionButtons.frame.size.height/2.0,
+                                                self.playerSelectionButtons.frame.size.width/2.0,
+                                                self.playerSelectionButtons.frame.size.height/2.0);
+        UIButton *multiplyButton = [[UIButton alloc] initWithFrame:multiplyButtonFrame];
+        [multiplyButton addTarget:self action:@selector(multiplySelected) forControlEvents:UIControlEventTouchUpInside];
+        multiplyButton.backgroundColor = [UIColor yellowColor];
+        [multiplyButton setTitle:@"×" forState:UIControlStateNormal];
+        multiplyButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
+        [self.playerSelectionButtons addSubview:multiplyButton];
+        
+        CGRect divideButtonFrame = CGRectMake(self.playerSelectionButtons.frame.size.width/2.0,
+                                              self.playerSelectionButtons.frame.size.height/2.0,
+                                              self.playerSelectionButtons.frame.size.width/2.0,
+                                              self.playerSelectionButtons.frame.size.height/2.0);
+        UIButton *divideButton = [[UIButton alloc] initWithFrame:divideButtonFrame];
+        [divideButton addTarget:self action:@selector(divideSelected) forControlEvents:UIControlEventTouchUpInside];
+        divideButton.backgroundColor = [UIColor greenColor];
+        [divideButton setTitle:@"÷" forState:UIControlStateNormal];
+        divideButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
+        [self.playerSelectionButtons addSubview:divideButton];
+        
+        
+    }
+}
+- (IBAction)increaseSpeed:(id)sender {
+    [self.gameStateLogic increaseSpeed];
+}
+- (IBAction)reduceSpeed:(id)sender {
+    [self.gameStateLogic decreaseSpeed];
+}
+
+
 - (void)updateScoreLabelWithScore:(int)score {
     self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
 }
 
-- (IBAction)plusSelected:(id)sender {
+- (void)plusSelected {
     BOOL answer = [self.numberLogic plusSelected];
     
     [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
-- (IBAction)minusSelected:(id)sender {
+- (void)minusSelected {
     BOOL answer = [self.numberLogic minusSelected];
 
     [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
-- (IBAction)multiplySelected:(id)sender {
+- (void)multiplySelected {
     BOOL answer = [self.numberLogic multiplySelected];
     
     [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
 }
 
-- (IBAction)divideSelected:(id)sender {
-    
+- (void)divideSelected {
     BOOL answer = [self.numberLogic divideSelected];
     
     [self.gameStateLogic updateScoreWithAnswer:answer];

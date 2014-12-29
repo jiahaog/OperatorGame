@@ -14,6 +14,9 @@
 @interface HPDGameStateLogic ()
 
 @property (nonatomic) HPDGameScreenViewController *gameScreenViewController;
+@property (nonatomic) NSTimer *gameTimer;
+
+@property (nonatomic) int gameSpeed;
 
 @end
 
@@ -34,14 +37,40 @@
 
 - (void)initialiseScore {
     
-    self.score = 0;
+    // Starting score
+    self.score = 5;
     
-    [NSTimer scheduledTimerWithTimeInterval:2.0
-                                     target:self
-                                   selector:@selector(decrementScoreOverTime)
-                                   userInfo:nil
-                                    repeats:YES];
+    // Starting speed
+    self.gameSpeed = 5;
+    [self changeSpeedTo:self.gameSpeed];
     
+}
+
+- (void)increaseSpeed {
+    self.gameSpeed++;
+    [self changeSpeedTo:self.gameSpeed];
+}
+
+- (void)decreaseSpeed {
+    self.gameSpeed--;
+    [self changeSpeedTo:self.gameSpeed];
+}
+
+- (void)changeSpeedTo:(int)speed {
+    
+    if (self.gameTimer) {
+        [self.gameTimer invalidate];
+        self.gameTimer = nil;
+    }
+    
+    
+    NSLog(@"%f", 10.0/speed);
+    
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:10.0/speed
+                                                      target:self
+                                                    selector:@selector(decrementScoreOverTime)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 - (void)updateScoreWithAnswer:(BOOL)answer {
@@ -60,7 +89,6 @@
 }
 
 - (void)decrementScoreOverTime {
-    NSLog(@"decrementing score");
     [self modifyScoreByValue:-1];
     [self.gameScreenViewController updateScoreLabelWithScore:self.score];
 }

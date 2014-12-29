@@ -16,4 +16,7 @@
 
 - (instancetype)initWithViewController:(HPDGameScreenViewController *)vc;
 - (void)updateScoreWithAnswer:(BOOL)answer;
+
+- (void)increaseSpeed;
+- (void)decreaseSpeed;
 @end
