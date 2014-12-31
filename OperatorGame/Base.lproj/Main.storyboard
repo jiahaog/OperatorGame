@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--New Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HPDNewGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,26 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4s-0f-X4p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operator Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-vg-Ta5">
+                                <rect key="frame" x="240" y="161" width="119" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nN-dD-yDO">
                                 <rect key="frame" x="262" y="285" width="76" height="30"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JH7-4q-nok" kind="show" id="p4N-YC-ehE"/>
+                                    <segue destination="JH7-4q-nok" kind="presentation" id="IdQ-ER-Fmy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="P4s-0f-X4p" secondAttribute="centerY" id="3t3-Au-Gqj"/>
-                            <constraint firstAttribute="centerX" secondItem="P4s-0f-X4p" secondAttribute="centerX" id="JgM-4Z-AzH"/>
+                            <constraint firstAttribute="centerY" secondItem="6nN-dD-yDO" secondAttribute="centerY" id="4EJ-SI-hgh"/>
+                            <constraint firstItem="Y2G-vg-Ta5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="141" id="G1p-Hz-TxD"/>
+                            <constraint firstAttribute="centerX" secondItem="6nN-dD-yDO" secondAttribute="centerX" id="SlA-Oq-eLB"/>
+                            <constraint firstAttribute="centerX" secondItem="Y2G-vg-Ta5" secondAttribute="centerX" id="uwD-88-7Mt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="previousGameStatusTextLabel" destination="Y2G-vg-Ta5" id="9oV-4H-odb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="272"/>
+            <point key="canvasLocation" x="552" y="262"/>
         </scene>
         <!--Game Screen View Controller-->
         <scene sceneID="uO4-5a-1B3">
@@ -116,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aj1-yg-6Xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1421.5" y="271.5"/>
+            <point key="canvasLocation" x="1317.5" y="245.5"/>
         </scene>
     </scenes>
 </document>

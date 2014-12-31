@@ -10,6 +10,7 @@
 #import "HPDGameScreenViewController.h"
 #import "HPDNumberLogic.h"
 #import "HPDGameStateLogic.h"
+#import "HPDNewGameViewController.h"
 
 @interface HPDGameScreenViewController ()
 
@@ -20,6 +21,7 @@
 
 @property (nonatomic) HPDNumberLogic *numberLogic;
 @property (nonatomic) HPDGameStateLogic *gameStateLogic;
+
 
 @property (nonatomic) UIView *playerSelectionButtons;
 
@@ -178,6 +180,12 @@
     
     [self.gameStateLogic updateScoreWithAnswer:answer];
     [self newQuestion];
+}
+
+
+- (void)gameOver {
+    [self.firstScreenVC setPreviousGameStatusText:@"Game Over"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

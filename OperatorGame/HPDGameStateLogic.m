@@ -41,7 +41,7 @@
     self.score = 5;
     
     // Starting speed
-    self.gameSpeed = 5;
+    self.gameSpeed = 10;
     [self changeSpeedTo:self.gameSpeed];
     
 }
@@ -86,11 +86,16 @@
     
     [self.gameScreenViewController updateScoreLabelWithScore:self.score];
     
+    
+    
+    [self checkIfGameOver];
+    
 }
 
 - (void)decrementScoreOverTime {
     [self modifyScoreByValue:-1];
     [self.gameScreenViewController updateScoreLabelWithScore:self.score];
+    [self checkIfGameOver];
 }
 
 - (void)modifyScoreByValue:(int) value {
@@ -99,6 +104,20 @@
     
 }
 
+- (void)checkIfGameOver {
+    if (self.score == 0) {
+        
+        [self.gameScreenViewController gameOver];
+        return;
+    }
+    
+    
+    if (self.score == 10) {
+        
+        [self.gameScreenViewController gameOver];
+        return;
+    }
+}
 
 
 @end
