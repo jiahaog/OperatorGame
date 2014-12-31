@@ -15,9 +15,9 @@
 
 @property (nonatomic) HPDGameScreenViewController *gameScreenViewController;
 @property (nonatomic) NSTimer *gameTimer;
+@property (nonatomic) NSTimer *gameLevels;
 
-@property (nonatomic) int gameSpeed;
-
+@property (nonatomic) double gameSpeed;
 @end
 
 @implementation HPDGameStateLogic
@@ -38,25 +38,42 @@
 - (void)initialiseScore {
     
     // Starting score
-    self.score = 5;
+    self.score = 20;
     
     // Starting speed
-    self.gameSpeed = 10;
+    self.gameSpeed = 3;
+    
+    
     [self changeSpeedTo:self.gameSpeed];
+    float numberOfSecondsPerLevel = 3;
+    self.gameLevels = [NSTimer scheduledTimerWithTimeInterval:numberOfSecondsPerLevel
+                                     target:self
+                                   selector:@selector(increaseSpeed)
+                                   userInfo:nil
+                                    repeats:YES];
     
 }
 
+
 - (void)increaseSpeed {
+    double newGameSpeed = self.gameSpeed - 0.5;
+    if (newGameSpeed > 0) {
+        self.gameSpeed = newGameSpeed;
+        [self changeSpeedTo:self.gameSpeed];
+    }
+    
+    
+    
+}
+
+- (void)decreaseSpeed {
     self.gameSpeed++;
     [self changeSpeedTo:self.gameSpeed];
 }
 
-- (void)decreaseSpeed {
-    self.gameSpeed--;
-    [self changeSpeedTo:self.gameSpeed];
-}
-
-- (void)changeSpeedTo:(int)speed {
+- (void)changeSpeedTo:(double)speed {
+    
+    
     
     if (self.gameTimer) {
         [self.gameTimer invalidate];
@@ -64,9 +81,8 @@
     }
     
     
-    NSLog(@"%f", 10.0/speed);
-    
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:10.0/speed
+    NSLog(@"Changing speed to %f", speed);
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:speed
                                                       target:self
                                                     selector:@selector(decrementScoreOverTime)
                                                     userInfo:nil
@@ -93,7 +109,7 @@
 }
 
 - (void)decrementScoreOverTime {
-    [self modifyScoreByValue:-1];
+    [self modifyScoreByValue:-1.0];
     [self.gameScreenViewController updateScoreLabelWithScore:self.score];
     [self checkIfGameOver];
 }
@@ -105,14 +121,13 @@
 }
 
 - (void)checkIfGameOver {
-    if (self.score == 0) {
-        
-        [self.gameScreenViewController gameOver];
-        return;
-    }
-    
-    
-    if (self.score == 10) {
+
+
+    if (self.score == 0 || self.score == 30) {
+        [self.gameTimer invalidate];
+        self.gameTimer = nil;
+        [self.gameLevels invalidate];
+        self.gameLevels = nil;
         
         [self.gameScreenViewController gameOver];
         return;

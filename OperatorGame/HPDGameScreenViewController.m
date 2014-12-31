@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 Hippo Design. All rights reserved.
 //
 
+//http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
 
 #import "HPDGameScreenViewController.h"
 #import "HPDNumberLogic.h"
@@ -22,9 +28,7 @@
 @property (nonatomic) HPDNumberLogic *numberLogic;
 @property (nonatomic) HPDGameStateLogic *gameStateLogic;
 
-
 @property (nonatomic) UIView *playerSelectionButtons;
-
 @end
 
 @implementation HPDGameScreenViewController
@@ -43,6 +47,7 @@
     
     self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
     
+
     [self newQuestion];
     [self addPlayerSelectionButtons];
     
@@ -103,8 +108,11 @@
                                             self.playerSelectionButtons.frame.size.height/2.0);
         UIButton *plusButton = [[UIButton alloc] initWithFrame:plusButtonFrame];
         [plusButton addTarget:self action:@selector(plusSelected) forControlEvents:UIControlEventTouchUpInside];
-        plusButton.backgroundColor = [UIColor blueColor];
+        // Material Design Colors
+        // http://www.google.com/design/spec/style/color.html#color-color-palette
+        plusButton.backgroundColor = UIColorFromRGB(0x673AB7); // Deep Purple
         [plusButton setTitle:@"+" forState:UIControlStateNormal];
+        plusButton.titleEdgeInsets = UIEdgeInsetsMake(-18, 0, 0, 0);
         plusButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
         [self.playerSelectionButtons addSubview:plusButton];
         
@@ -114,8 +122,9 @@
                                              self.playerSelectionButtons.frame.size.height/2.0);
         UIButton *minusButton = [[UIButton alloc] initWithFrame:minusButtonFrame];
         [minusButton addTarget:self action:@selector(minusSelected) forControlEvents:UIControlEventTouchUpInside];
-        minusButton.backgroundColor = [UIColor redColor];
+        minusButton.backgroundColor = UIColorFromRGB(0x4CAF50); // Green
         [minusButton setTitle:@"−" forState:UIControlStateNormal];
+        minusButton.titleEdgeInsets = UIEdgeInsetsMake(-18, 0, 0, 0);
         minusButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
         [self.playerSelectionButtons addSubview:minusButton];
         
@@ -125,8 +134,9 @@
                                                 self.playerSelectionButtons.frame.size.height/2.0);
         UIButton *multiplyButton = [[UIButton alloc] initWithFrame:multiplyButtonFrame];
         [multiplyButton addTarget:self action:@selector(multiplySelected) forControlEvents:UIControlEventTouchUpInside];
-        multiplyButton.backgroundColor = [UIColor yellowColor];
+        multiplyButton.backgroundColor = UIColorFromRGB(0xFFEB3B); // Yellow
         [multiplyButton setTitle:@"×" forState:UIControlStateNormal];
+        multiplyButton.titleEdgeInsets = UIEdgeInsetsMake(-18, 0, 0, 0);
         multiplyButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
         [self.playerSelectionButtons addSubview:multiplyButton];
         
@@ -136,8 +146,9 @@
                                               self.playerSelectionButtons.frame.size.height/2.0);
         UIButton *divideButton = [[UIButton alloc] initWithFrame:divideButtonFrame];
         [divideButton addTarget:self action:@selector(divideSelected) forControlEvents:UIControlEventTouchUpInside];
-        divideButton.backgroundColor = [UIColor greenColor];
+        divideButton.backgroundColor = UIColorFromRGB(0xF44336); // Red
         [divideButton setTitle:@"÷" forState:UIControlStateNormal];
+        divideButton.titleEdgeInsets = UIEdgeInsetsMake(-18, 0, 0, 0);
         divideButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
         [self.playerSelectionButtons addSubview:divideButton];
         
@@ -182,6 +193,9 @@
     [self newQuestion];
 }
 
+- (IBAction)exitGameAction:(id)sender {
+    [self gameOver];
+}
 
 - (void)gameOver {
     [self.firstScreenVC setPreviousGameStatusText:@"Game Over"];
