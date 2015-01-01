@@ -19,6 +19,7 @@
 		977E53A31A504F70009FC6F9 /* HPDNumberLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 977E53A21A504F70009FC6F9 /* HPDNumberLogic.m */; };
 		97DFA2E61A50F76E00C0FD1C /* HPDGameStateLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DFA2E51A50F76E00C0FD1C /* HPDGameStateLogic.m */; };
 		97E309451A516F4C00C28060 /* HPDFlipperbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E309441A516F4C00C28060 /* HPDFlipperbleView.m */; };
+		97E438A21A55735500B4AA53 /* HPDLifeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E438A11A55735500B4AA53 /* HPDLifeBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		97DFA2E51A50F76E00C0FD1C /* HPDGameStateLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDGameStateLogic.m; sourceTree = "<group>"; };
 		97E309431A516F4C00C28060 /* HPDFlipperbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDFlipperbleView.h; sourceTree = "<group>"; };
 		97E309441A516F4C00C28060 /* HPDFlipperbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDFlipperbleView.m; sourceTree = "<group>"; };
+		97E438A01A55735500B4AA53 /* HPDLifeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDLifeBarView.h; sourceTree = "<group>"; };
+		97E438A11A55735500B4AA53 /* HPDLifeBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDLifeBarView.m; sourceTree = "<group>"; };
 		FF19B4A7F9D616CE71FDAF1D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +176,8 @@
 				976D67861A542FF0008C4F88 /* HPDNewGameViewController.m */,
 				977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */,
 				977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */,
+				97E438A01A55735500B4AA53 /* HPDLifeBarView.h */,
+				97E438A11A55735500B4AA53 /* HPDLifeBarView.m */,
 				97E309431A516F4C00C28060 /* HPDFlipperbleView.h */,
 				97E309441A516F4C00C28060 /* HPDFlipperbleView.m */,
 			);
@@ -322,6 +327,7 @@
 				9703E99D1A3C26740099405D /* main.m in Sources */,
 				97E309451A516F4C00C28060 /* HPDFlipperbleView.m in Sources */,
 				977E53A31A504F70009FC6F9 /* HPDNumberLogic.m in Sources */,
+				97E438A21A55735500B4AA53 /* HPDLifeBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

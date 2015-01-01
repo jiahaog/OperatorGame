@@ -10,12 +10,15 @@
 #import "HPDGameScreenViewController.h"
 #import <BFPaperButton.h>
 #import <UIColor+BFPaperColors.h>
+#import "HPDLifeBarView.h"
 
 @interface HPDNewGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *previousGameStatusTextLabel;
 
 @property (nonatomic) BFPaperButton *theNewGameButton;
+
+@property (nonatomic) HPDLifeBarView *lifeBar;
 
 @end
 
@@ -27,6 +30,18 @@
     // Do any additional setup after loading the view.
     if (!self.theNewGameButton) {
         [self createNewGameButton];
+    }
+    
+    [self initLifeBar];
+}
+
+// for testing
+- (void)initLifeBar {
+    if (!self.lifeBar) {
+//        CGRect lifeBarFrame = CGRectMake(0, 50, self.view.frame.size.width, 60);
+        CGRect lifeBarFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        self.lifeBar = [[HPDLifeBarView alloc] initWithFrame:lifeBarFrame];
+        [self.view addSubview:self.lifeBar];
     }
 }
 
@@ -49,7 +64,8 @@
     CGRect bottomBarFrame = CGRectMake(0, self.view.frame.size.height*2/3, self.view.frame.size.width, self.view.frame.size.height/3);
     self.theNewGameButton = [[BFPaperButton alloc] initWithFrame:bottomBarFrame raised:YES];
     self.theNewGameButton.backgroundColor = [UIColor paperColorGray];
-    [self.theNewGameButton setTitle:@"New Game" forState:UIControlStateNormal];
+    [self.theNewGameButton setTitle:@"Start" forState:UIControlStateNormal];
+    [self.theNewGameButton setTitleFont:[UIFont systemFontOfSize:70]];
     [self.theNewGameButton addTarget:self action:@selector(startNewGameInstance) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.self.theNewGameButton];
     

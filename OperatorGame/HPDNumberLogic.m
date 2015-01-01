@@ -14,8 +14,8 @@
 
 - (void)generateRandom {
     
-    self.numberA = arc4random_uniform(11) + 1;
-    self.numberB = arc4random_uniform(11) + 1;
+    self.numberA = arc4random_uniform(9) + 1;
+    self.numberB = arc4random_uniform(9) + 1;
     
 }
 
