@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--New Game View Controller-->
@@ -23,21 +24,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nN-dD-yDO">
-                                <rect key="frame" x="262" y="285" width="76" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nN-dD-yDO">
+                                <rect key="frame" x="16" y="462" width="568" height="30"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JH7-4q-nok" kind="presentation" id="IdQ-ER-Fmy"/>
+                                    <segue destination="JH7-4q-nok" kind="presentation" identifier="gameScreenSegue" id="IdQ-ER-Fmy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="6nN-dD-yDO" secondAttribute="centerY" id="4EJ-SI-hgh"/>
                             <constraint firstItem="Y2G-vg-Ta5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="141" id="G1p-Hz-TxD"/>
-                            <constraint firstAttribute="centerX" secondItem="6nN-dD-yDO" secondAttribute="centerX" id="SlA-Oq-eLB"/>
+                            <constraint firstAttribute="centerX" secondItem="6nN-dD-yDO" secondAttribute="centerX" id="O8S-kf-f0x"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6nN-dD-yDO" secondAttribute="centerY" multiplier="0.66" constant="285" id="hGm-HW-d2A"/>
                             <constraint firstAttribute="centerX" secondItem="Y2G-vg-Ta5" secondAttribute="centerX" id="uwD-88-7Mt"/>
                         </constraints>
                     </view>

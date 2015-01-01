@@ -18,6 +18,10 @@ alpha:1.0]
 #import "HPDGameStateLogic.h"
 #import "HPDNewGameViewController.h"
 
+// https://github.com/bfeher/BFPaperButton
+#import <BFPaperButton.h>
+
+
 @interface HPDGameScreenViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *numberALabel;
@@ -106,7 +110,9 @@ alpha:1.0]
                                             0,
                                             self.playerSelectionButtons.frame.size.width/2.0,
                                             self.playerSelectionButtons.frame.size.height/2.0);
-        UIButton *plusButton = [[UIButton alloc] initWithFrame:plusButtonFrame];
+//        UIButton *plusButton = [[UIButton alloc] initWithFrame:plusButtonFrame];
+        BFPaperButton *plusButton = [[BFPaperButton alloc] initWithFrame:plusButtonFrame raised:NO];
+        plusButton.tapCircleDiameter = bfPaperButton_tapCircleDiameterSmall;
         [plusButton addTarget:self action:@selector(plusSelected) forControlEvents:UIControlEventTouchUpInside];
         // Material Design Colors
         // http://www.google.com/design/spec/style/color.html#color-color-palette
@@ -115,12 +121,17 @@ alpha:1.0]
         plusButton.titleEdgeInsets = UIEdgeInsetsMake(-18, 0, 0, 0);
         plusButton.titleLabel.font = [UIFont systemFontOfSize:buttonTitleFontSize];
         [self.playerSelectionButtons addSubview:plusButton];
+
+
+        
+        
         
         CGRect minusButtonFrame = CGRectMake(self.playerSelectionButtons.frame.size.width/2.0,
                                              0,
                                              self.playerSelectionButtons.frame.size.width/2.0,
                                              self.playerSelectionButtons.frame.size.height/2.0);
-        UIButton *minusButton = [[UIButton alloc] initWithFrame:minusButtonFrame];
+        BFPaperButton *minusButton = [[BFPaperButton alloc] initWithFrame:minusButtonFrame raised:NO];
+        minusButton.tapCircleDiameter = bfPaperButton_tapCircleDiameterSmall;
         [minusButton addTarget:self action:@selector(minusSelected) forControlEvents:UIControlEventTouchUpInside];
         minusButton.backgroundColor = UIColorFromRGB(0x4CAF50); // Green
         [minusButton setTitle:@"−" forState:UIControlStateNormal];
@@ -132,7 +143,8 @@ alpha:1.0]
                                                 self.playerSelectionButtons.frame.size.height/2.0,
                                                 self.playerSelectionButtons.frame.size.width/2.0,
                                                 self.playerSelectionButtons.frame.size.height/2.0);
-        UIButton *multiplyButton = [[UIButton alloc] initWithFrame:multiplyButtonFrame];
+        BFPaperButton *multiplyButton = [[BFPaperButton alloc] initWithFrame:multiplyButtonFrame raised:NO];
+        multiplyButton.tapCircleDiameter = bfPaperButton_tapCircleDiameterSmall;
         [multiplyButton addTarget:self action:@selector(multiplySelected) forControlEvents:UIControlEventTouchUpInside];
         multiplyButton.backgroundColor = UIColorFromRGB(0xFFEB3B); // Yellow
         [multiplyButton setTitle:@"×" forState:UIControlStateNormal];
@@ -144,7 +156,8 @@ alpha:1.0]
                                               self.playerSelectionButtons.frame.size.height/2.0,
                                               self.playerSelectionButtons.frame.size.width/2.0,
                                               self.playerSelectionButtons.frame.size.height/2.0);
-        UIButton *divideButton = [[UIButton alloc] initWithFrame:divideButtonFrame];
+        BFPaperButton *divideButton = [[BFPaperButton alloc] initWithFrame:divideButtonFrame raised:NO];
+        divideButton.tapCircleDiameter = bfPaperButton_tapCircleDiameterSmall;
         [divideButton addTarget:self action:@selector(divideSelected) forControlEvents:UIControlEventTouchUpInside];
         divideButton.backgroundColor = UIColorFromRGB(0xF44336); // Red
         [divideButton setTitle:@"÷" forState:UIControlStateNormal];

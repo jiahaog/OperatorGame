@@ -51,7 +51,6 @@
                                    selector:@selector(increaseSpeed)
                                    userInfo:nil
                                     repeats:YES];
-    
 }
 
 
@@ -87,6 +86,7 @@
                                                     selector:@selector(decrementScoreOverTime)
                                                     userInfo:nil
                                                      repeats:YES];
+//    [self.gameTimer fire];
 }
 
 - (void)updateScoreWithAnswer:(BOOL)answer {

@@ -8,10 +8,14 @@
 
 #import "HPDNewGameViewController.h"
 #import "HPDGameScreenViewController.h"
+#import <BFPaperButton.h>
+#import <UIColor+BFPaperColors.h>
 
 @interface HPDNewGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *previousGameStatusTextLabel;
+
+@property (nonatomic) BFPaperButton *theNewGameButton;
 
 @end
 
@@ -21,7 +25,9 @@
     [super viewDidLoad];
 //    self.previousGameStatusTextLabel.text = @"";
     // Do any additional setup after loading the view.
-    
+    if (!self.theNewGameButton) {
+        [self createNewGameButton];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +44,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)createNewGameButton {
+    CGRect bottomBarFrame = CGRectMake(0, self.view.frame.size.height*2/3, self.view.frame.size.width, self.view.frame.size.height/3);
+    self.theNewGameButton = [[BFPaperButton alloc] initWithFrame:bottomBarFrame raised:YES];
+    self.theNewGameButton.backgroundColor = [UIColor paperColorGray];
+    [self.theNewGameButton setTitle:@"New Game" forState:UIControlStateNormal];
+    [self.theNewGameButton addTarget:self action:@selector(startNewGameInstance) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.self.theNewGameButton];
+    
+    
+}
+
+- (void)startNewGameInstance {
+//    [[UIStoryboard storyboardWithName:@"mainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"gameScreenStoryboardID"];
+    [self performSegueWithIdentifier:@"gameScreenSegue" sender:self];
+    
+}
 
 - (void)setPreviousGameStatusText:(NSString *)text {
     self.previousGameStatusTextLabel.text = text;
