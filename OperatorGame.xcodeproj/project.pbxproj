@@ -20,6 +20,7 @@
 		97DFA2E61A50F76E00C0FD1C /* HPDGameStateLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DFA2E51A50F76E00C0FD1C /* HPDGameStateLogic.m */; };
 		97E309451A516F4C00C28060 /* HPDFlipperbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E309441A516F4C00C28060 /* HPDFlipperbleView.m */; };
 		97E438A21A55735500B4AA53 /* HPDLifeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E438A11A55735500B4AA53 /* HPDLifeBarView.m */; };
+		97E438A51A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E438A41A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		97E309441A516F4C00C28060 /* HPDFlipperbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDFlipperbleView.m; sourceTree = "<group>"; };
 		97E438A01A55735500B4AA53 /* HPDLifeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDLifeBarView.h; sourceTree = "<group>"; };
 		97E438A11A55735500B4AA53 /* HPDLifeBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDLifeBarView.m; sourceTree = "<group>"; };
+		97E438A31A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPDAnswerCorrectnessOverlay.h; sourceTree = "<group>"; };
+		97E438A41A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPDAnswerCorrectnessOverlay.m; sourceTree = "<group>"; };
 		FF19B4A7F9D616CE71FDAF1D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +179,8 @@
 				976D67861A542FF0008C4F88 /* HPDNewGameViewController.m */,
 				977E539E1A504BF6009FC6F9 /* HPDGameScreenViewController.h */,
 				977E539F1A504BF6009FC6F9 /* HPDGameScreenViewController.m */,
+				97E438A31A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.h */,
+				97E438A41A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.m */,
 				97E438A01A55735500B4AA53 /* HPDLifeBarView.h */,
 				97E438A11A55735500B4AA53 /* HPDLifeBarView.m */,
 				97E309431A516F4C00C28060 /* HPDFlipperbleView.h */,
@@ -320,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97E438A51A55A13300B4AA53 /* HPDAnswerCorrectnessOverlay.m in Sources */,
 				9703E9A01A3C26740099405D /* AppDelegate.m in Sources */,
 				97DFA2E61A50F76E00C0FD1C /* HPDGameStateLogic.m in Sources */,
 				976D67871A542FF0008C4F88 /* HPDNewGameViewController.m in Sources */,

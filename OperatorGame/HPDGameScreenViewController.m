@@ -17,6 +17,8 @@ alpha:1.0]
 #import "HPDNumberLogic.h"
 #import "HPDGameStateLogic.h"
 #import "HPDNewGameViewController.h"
+#import "HPDLifeBarView.h"
+#import "HPDAnswerCorrectnessOverlay.h"
 
 // https://github.com/bfeher/BFPaperButton
 #import <BFPaperButton.h>
@@ -26,7 +28,7 @@ alpha:1.0]
 @interface HPDGameScreenViewController ()
 
 
-@property (nonatomic) UILabel *scoreLabel;
+@property (nonatomic) HPDLifeBarView *lifeBarView;
 
 @property (nonatomic) UILabel *numberALabel;
 @property (nonatomic) UILabel *numberBLabel;
@@ -36,7 +38,7 @@ alpha:1.0]
 @property (nonatomic) HPDGameStateLogic *gameStateLogic;
 
 @property (nonatomic) UIView *playerSelectionButtons;
-@property (nonatomic) UILabel *answerCorrectnessOverlay;
+@property (nonatomic) HPDAnswerCorrectnessOverlay *answerCorrectnessOverlay;
 
 @property (nonatomic) CGFloat lifeBarHeight;
 @property (nonatomic) CGFloat numberAnimationDuration;
@@ -57,12 +59,12 @@ alpha:1.0]
         self.gameStateLogic = [[HPDGameStateLogic alloc] initWithViewController:self];
     }
     
-    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
+//    self.scoreLabel.text = [@(self.gameStateLogic.currentLife) stringValue];
     self.lifeBarHeight = 50.0;
     self.numberAnimationDuration = 0.4;
 
     [self newQuestion];
-    [self initialiseScoreLabel];
+    [self initialiseLife];
     [self initialisePlayerSelectionButtons];
     [self initialiseAnswerCorrectnessOverlay];
     
@@ -147,11 +149,11 @@ alpha:1.0]
     }
 }
 
-- (void)initialiseScoreLabel {
-    if (!self.scoreLabel) {
-        [self animateScoreLabelIn];
+- (void)initialiseLife {
+    if (!self.lifeBarView) {
+        [self animateLifeBarIn];
     }
-    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
+//    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
 }
 
 - (void)initialiseAnswerCorrectnessOverlay {
@@ -161,15 +163,16 @@ alpha:1.0]
 //        CGRect overlayFrame = CGRectMake(0, 0, self.view.frame.size.width, numberHeights*2.0);
         
         
-        CGRect overlayFrame = self.scoreLabel.frame;
-        self.answerCorrectnessOverlay = [[UILabel alloc] initWithFrame:overlayFrame];
-        [self.answerCorrectnessOverlay setTextAlignment:NSTextAlignmentCenter];
+//        CGRect overlayFrame = self.lifeBarView.frame;
+        CGRect overlayFrame = CGRectMake(self.lifeBarView.frame.origin.x, self.lifeBarView.frame.origin.y, self.lifeBarView.frame.size.width - self.lifeBarView.frame.size.height, self.lifeBarView.frame.size.height);
+        self.answerCorrectnessOverlay = [[HPDAnswerCorrectnessOverlay alloc] initWithFrame:overlayFrame];
+        [self.answerCorrectnessOverlay setTextAlignment:NSTextAlignmentRight];
         [self.answerCorrectnessOverlay setTextColor:[UIColor whiteColor]];
-        [self.answerCorrectnessOverlay setFont:[UIFont systemFontOfSize:40]];
+        [self.answerCorrectnessOverlay setFont:[UIFont systemFontOfSize:20]];
         [self.answerCorrectnessOverlay setBackgroundColor:[UIColor clearColor]];
         
 //        self.answerCorrectnessOverlay.alpha = 1.0;
-        [self.scoreLabel addSubview:self.answerCorrectnessOverlay];
+        [self.lifeBarView addSubview:self.answerCorrectnessOverlay];
         
     }
 }
@@ -194,28 +197,34 @@ alpha:1.0]
 
 #pragma mark Game Action Methods
 
-- (void)updateScoreLabelWithScore:(int)score {
-    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
+- (void)updateLifeBarWithLife:(int)score {
+//    self.scoreLabel.text = [@(self.gameStateLogic.score) stringValue];
+    NSLog(@"%d", self.gameStateLogic.currentLife);
+    [self.lifeBarView updateLifeWithLife:self.gameStateLogic.currentLife];
+}
+
+- (void)updateScoreWithScore:(int)score {
+    [self.lifeBarView updateScoreWithScore:score];
 }
 
 - (void)plusSelected {
     BOOL answer = [self.numberLogic plusSelected];
     
-    [self.gameStateLogic updateScoreWithAnswer:answer];
+    [self.gameStateLogic updateLifeWithAnswer:answer];
     [self animateFlashForAnswer:answer];
     [self newQuestion];
 }
 - (void)minusSelected {
     BOOL answer = [self.numberLogic minusSelected];
 
-    [self.gameStateLogic updateScoreWithAnswer:answer];
+    [self.gameStateLogic updateLifeWithAnswer:answer];
     [self animateFlashForAnswer:answer];
     [self newQuestion];
 }
 - (void)multiplySelected {
     BOOL answer = [self.numberLogic multiplySelected];
     
-    [self.gameStateLogic updateScoreWithAnswer:answer];
+    [self.gameStateLogic updateLifeWithAnswer:answer];
     [self animateFlashForAnswer:answer];
     [self newQuestion];
 }
@@ -223,13 +232,20 @@ alpha:1.0]
 - (void)divideSelected {
     BOOL answer = [self.numberLogic divideSelected];
     
-    [self.gameStateLogic updateScoreWithAnswer:answer];
+    [self.gameStateLogic updateLifeWithAnswer:answer];
     [self animateFlashForAnswer:answer];
     [self newQuestion];
 }
 
 - (void)gameOver {
+    
+
     [self.firstScreenVC setPreviousGameStatusText:@"Game Over"];
+    
+    NSString *scoreString = [NSString stringWithFormat:@"Your Score: %d", self.gameStateLogic.score];
+    [self.firstScreenVC setPreviousGameScoreText:scoreString];
+    
+    [self.firstScreenVC checkAndUpdateHighScoreWithScore:self.gameStateLogic.score];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -330,19 +346,16 @@ alpha:1.0]
 //    
 //}
 
-- (void)animateScoreLabelIn {
+- (void)animateLifeBarIn {
     
     CGFloat numberHeights = (self.view.frame.size.height*2.0/3.0 - self.lifeBarHeight) / 2.0;
         
-    self.scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.lifeBarHeight)];
-    [self.view addSubview:self.scoreLabel];
-    self.scoreLabel.backgroundColor = [UIColor paperColorBlueGray];
-    [self.scoreLabel setFont:[UIFont systemFontOfSize:40]];
-//    self.scoreLabel.adjustsFontSizeToFitWidth = YES;
-    [self.scoreLabel setTextColor:[UIColor whiteColor]];
-    [self.scoreLabel setTextAlignment:NSTextAlignmentCenter];
+    self.lifeBarView = [[HPDLifeBarView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.lifeBarHeight) ];
+    [self.lifeBarView updateLifeWithLife:self.gameStateLogic.currentLife];
     
-    [self animateView:self.scoreLabel toPosition:CGPointMake(0, numberHeights*2) beginTime:CACurrentMediaTime() removeAfterCompletion:NO interaction:NO];
+    [self.view addSubview:self.lifeBarView];
+    
+    [self animateView:self.lifeBarView toPosition:CGPointMake(0, numberHeights*2) beginTime:CACurrentMediaTime() removeAfterCompletion:NO interaction:NO];
     
 }
 
@@ -352,7 +365,6 @@ alpha:1.0]
 removeAfterCompletion:(BOOL)remove
  interaction:(BOOL)interaction {
     
-    NSLog(@"disabling interaction");
     [self.playerSelectionButtons setUserInteractionEnabled:NO];
     
     
@@ -364,7 +376,7 @@ removeAfterCompletion:(BOOL)remove
 
     animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         if (interaction) {
-            NSLog(@"Enabling interaction");
+
             [self.playerSelectionButtons setUserInteractionEnabled:YES];
         }
         if (remove) {
@@ -386,14 +398,13 @@ removeAfterCompletion:(BOOL)remove
     animateOverlayInBackgroundColor.duration = flashDuration;
     
     if (answer) {
-//        [self.answerCorrectnessOverlay setText:@"Correct!"];
-
+        [self.answerCorrectnessOverlay setText:@"Correct!"];
         UIColor *correctColor = [UIColor paperColorGreen];
         UIColor *correctColorWithAlpha = [correctColor colorWithAlphaComponent:overlayAlpha];
 
         animateOverlayInBackgroundColor.toValue = correctColorWithAlpha;
     } else {
-//        [self.answerCorrectnessOverlay setText:@"Wrong!"];
+        [self.answerCorrectnessOverlay setText:@"Wrong!"];
         
         UIColor *wrongColor = [UIColor paperColorRed];
         UIColor *wrongColorWithAlpha = [wrongColor colorWithAlphaComponent:overlayAlpha];

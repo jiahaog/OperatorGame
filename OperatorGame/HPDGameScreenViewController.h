@@ -16,6 +16,8 @@
 
 // Public method as HPDGameStateLogic keeps a pointer to this view controller
 // Allow the game logic to personally call updates to the view controller
-- (void)updateScoreLabelWithScore:(int)score;
+- (void)updateLifeBarWithLife:(int)life;
+- (void)updateScoreWithScore:(int)score;
 - (void)gameOver;
+
 @end

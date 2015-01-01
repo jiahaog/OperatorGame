@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HPDNewGameViewController : UIViewController
+@interface HPDNewGameViewController : UIViewController <NSCoding>
 
 
 
 - (void)setPreviousGameStatusText:(NSString *)text;
-
+- (void)setPreviousGameScoreText:(NSString *)scoreText;
+- (void)checkAndUpdateHighScoreWithScore:(int)score;
 @end

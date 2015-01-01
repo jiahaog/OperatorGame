@@ -10,4 +10,10 @@
 
 @interface HPDLifeBarView : UIView
 
+
+- (void)updateLifeWithLife:(int)life;
+- (void)updateScoreWithScore:(int)score;
+
 @end
+
+

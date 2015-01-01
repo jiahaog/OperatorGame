@@ -16,8 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operator Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-vg-Ta5">
-                                <rect key="frame" x="240" y="161" width="119" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-vg-Ta5">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpt-uZ-Le1">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a44-d0-ClR">
+                                <rect key="frame" x="255" y="220" width="90" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -26,10 +36,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y2G-vg-Ta5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="141" id="G1p-Hz-TxD"/>
+                            <constraint firstAttribute="centerX" secondItem="Rpt-uZ-Le1" secondAttribute="centerX" id="WVa-At-JMk"/>
+                            <constraint firstAttribute="centerX" secondItem="a44-d0-ClR" secondAttribute="centerX" id="XMn-g6-wn5"/>
+                            <constraint firstItem="a44-d0-ClR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="kqP-lA-DA6"/>
                             <constraint firstAttribute="centerX" secondItem="Y2G-vg-Ta5" secondAttribute="centerX" id="uwD-88-7Mt"/>
+                            <constraint firstItem="Rpt-uZ-Le1" firstAttribute="top" secondItem="Y2G-vg-Ta5" secondAttribute="bottom" constant="7.5" id="vz6-eg-6zs"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="highScoreLabel" destination="a44-d0-ClR" id="Umf-8V-RJ1"/>
+                        <outlet property="previousGameScoreLabel" destination="Rpt-uZ-Le1" id="nrQ-G9-UPw"/>
                         <outlet property="previousGameStatusTextLabel" destination="Y2G-vg-Ta5" id="9oV-4H-odb"/>
                         <segue destination="JH7-4q-nok" kind="show" identifier="gameScreenSegue" id="zmV-7N-hsV"/>
                     </connections>

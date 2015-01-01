@@ -11,12 +11,13 @@
 
 @interface HPDGameStateLogic : NSObject
 
+@property (nonatomic) int currentLife;
 @property (nonatomic) int score;
 
-
 - (instancetype)initWithViewController:(HPDGameScreenViewController *)vc;
-- (void)updateScoreWithAnswer:(BOOL)answer;
+- (void)updateLifeWithAnswer:(BOOL)answer;
 
-- (void)increaseSpeed;
-- (void)decreaseSpeed;
+
+//- (void)increaseSpeed;
+//- (void)decreaseSpeed;
 @end
