@@ -43,6 +43,7 @@ alpha:1.0]
 @property (nonatomic) CGFloat lifeBarHeight;
 @property (nonatomic) CGFloat numberAnimationDuration;
 
+
 @end
 
 @implementation HPDGameScreenViewController
